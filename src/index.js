@@ -87,7 +87,7 @@ import { app, httpServer } from "./lib/socket.js";
 
 
 // --- keep Render alive ---
-const URL = "https://wicikibackend.onrender.com/ping";
+const URL = "https://wicikichatbackend.onrender.com/ping";
 function scheduleRandomPing() {
   const minutes = Math.floor(Math.random() * 11) + 5; // every 5–15 mins
   cron.schedule(`*/${minutes} * * * *`, async () => {
