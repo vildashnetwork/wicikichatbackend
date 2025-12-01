@@ -69,6 +69,7 @@
 import dotenv from "dotenv";
 dotenv.config(); // must run before importing modules that use process.env
 
+import cron from "node-cron";
 // --- now import everything else ---
 import express from "express";
 import authRoutes from "./routes/auth.route.js";
@@ -82,6 +83,23 @@ import { dirname, join } from "path";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import { app, httpServer } from "./lib/socket.js";
+
+
+
+// --- keep Render alive ---
+const URL = "https://wicikibackend.onrender.com/ping";
+function scheduleRandomPing() {
+  const minutes = Math.floor(Math.random() * 11) + 5; // every 5–15 mins
+  cron.schedule(`*/${minutes} * * * *`, async () => {
+    try {
+      await fetch(URL);
+      console.log("pinged");
+    } catch (e) {
+      console.error("ping failed", e.message);
+    }
+  });
+}
+scheduleRandomPing();
 
 // --- Middleware ---
 app.use(express.json({ limit: "10mb" }));
