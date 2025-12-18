@@ -92,7 +92,7 @@ function scheduleRandomPing() {
   const minutes = Math.floor(Math.random() * 11) + 5; // every 5–15 mins
   cron.schedule(`*/${minutes} * * * *`, async () => {
     try {
-      await fetch(URL);
+      await fetch(URL); 8
       console.log("pinged");
     } catch (e) {
       console.error("ping failed", e.message);
