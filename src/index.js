@@ -106,7 +106,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://wicikis.vercel.app", "https://wicichats.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://wicikis.vercel.app", "https://wicichats.vercel.app", "https://wicikis.onrender.com"],
     credentials: true,
   })
 );
